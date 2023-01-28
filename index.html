@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Type Script</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/league.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+<!-- первая секция - выбор разрабов -->
+				<section>
+          <section>
+            <p style="font-size: 64px;">What choice to make a front-end developer?</p>
+          </section>
+          <section>
+            <li style="margin-bottom: 30px;">Use JS with all its disadvantages</li>
+            <li>Write code in another language and compile it to JS</li>
+          </section>
+          <section>
+            <img data-src="https://img.devrant.com/devrant/rant/r_1039914_fMfzx.jpg" width="50%" height="70%">
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              <img data-src="https://filearchive.cnews.ru/img/news/2022/08/29/prog602.jpg" width="50%" height="500px">
+              <p><a href="https://www.ieee.org/">Institute of Electrical and Electronics Engineers</a></p>
+            </textarea>
+          </section>
+        </section>
+<!-- вторая секция - что такое TS -->
+				<section>
+          <section>
+            <p style="font-size: 64px;">What is Type Script?</p>
+          </section>
+          <section>
+            <p>TypeScript is a web development programming language based on JavaScript. Makes the code clearer and more reliable, adds static typing (variables are bound to specific data types)</p>
+          </section>
+        </section>
+<!-- третья секция - переменные -->
+        <section>
+          <section>
+            <p style="font-size: 64px;">Variable declaration</p>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ```ts
+              let a = 1; // or
+              let a: number = 1;
+
+              let b = "text"; // or
+              let b: string = "text";
+
+              const c = true; // or
+              const c: boolean = true;
+              
+              let d: number;
+              d = 5;
+
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              Variable type cannot be changed:
+              ```ts 
+              let a = 1;
+
+              a = "text"; // Error: Type 'string' is not assignable to type 'number'
+              ```
+            </textarea>
+          </section>
+        </section>
+<!-- четвертая секция - any и unknown -->
+        <section>
+          <section>
+            <p style="font-size: 64px;">Any and Unknown types in TypeScript</p>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ```ts 
+              let firstRandomValue: any = 5;
+
+              let secondRandomValue: unknown = 10;
+              ```
+            </textarea>
+          </section>
+        </section>
+<!-- пятая секция - enums -->
+        <section>
+          <section>
+            <p style="font-size: 64px;">Enums</p>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ```ts 
+              enum ColorName {
+                Red,
+                Blue,
+                Green,
+              };
+              const numberColor = colorName.Green; // 2
+
+              enum Season { 
+                Winter = "Winter", 
+                Spring = "Spring",
+                Summer = "Summer", 
+                Autumn = "Autumn"
+              };
+              const target: Season = Season.Summer;
+              console.log(target); // "Summer"
+              ```
+            </textarea>
+          </section>
+        </section>
+<!-- шестая секция - union -->
+        <section>
+          <section style="font-size: 64px;">Union</section>
+          <section data-markdown>
+            <textarea data-template>
+              ```ts 
+              let exampleValue = string | boolean;
+  
+              exampleValue = 10;
+  
+              exampleValue = true; // not error
+
+
+
+              function sayId(id: number|string) {
+                console.log(`Id: ${id}`);
+              }
+              let id: string|number = "42";
+              say(id); // "42"
+              say(13); // 13
+              say("66") // "66"
+              ```
+            </textarea>
+          </section>
+        </section>
+<!-- седьмая секция - Type Aliases -->
+        <section>
+          <section style="font-size: 64px;">Type Aliases</section>
+          <section data-markdown>
+            <textarea data-template>
+              ```ts
+              let exampleValue = string | number; // last example
+
+              type exampleAlias = string | number;
+              let newExample: exampleAlias;
+              newExample = "test";
+              newExample = 10;
+              ```
+            </textarea>
+          </section>
+        </section>
+<!-- восьмая секция - Arrays -->
+        <section>
+          <section style="font-size: 64px;">Arrays</section>
+          <section data-markdown>
+            <textarea data-template>
+              ```ts
+              let firstArray: string[] = ["one", "two", "three"];
+
+              let firstArray: Array<string> = ["one", "two", "three"];
+              ```
+            </textarea>
+          </section>
+          <section style="font-size: 64px;">Typles</section>
+          <section data-markdown>
+            <textarea data-template>
+              ```
+              let firstArray: [string, boolean] = ["test", false];
+
+              let secondArray: [number, string] = [1, "two"];
+              ```
+            </textarea>
+          </section>
+        </section>
+<!-- девятая секция - Interfaces -->
+        <section>
+          <section style="font-size: 64px;">Interfaces</section>
+          <section data-markdown>
+            <textarea data-template>
+              ```ts
+              const firstExample: { a: string; b: string };
+
+              interface forExample {
+                a: string;
+                b: string;
+              }
+              const firstExample: forExample;
+
+              interface forExample {
+                c: string;
+              }
+
+              firstExample.c = "test";
+              ```
+            </textarea>
+          </section>
+        </section>
+<!-- десятая секция class -->
+        <section>
+          <section style="font-size: 64px;">Classes</section>
+          <section data-markdown>
+            <textarea data-template>
+              ```ts
+              constructor(drive: string, color: string, volume = 1.2) {
+                this.make = make;
+                this.color = color;
+                this.volume = volume;
+              }
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ```ts
+              movementSpeed(speed: number): string {
+                return `${this.drive} is moving at a speed of ${speed}.`
+              }
+              ```
+            </textarea>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              ```ts
+              class ExampleBase {
+                public x: number;
+                private y: number;
+                protected z: number;
+              }
+              ```
+            </textarea>
+          </section>
+        </section>
+<!-- 11 секция - итог -->
+        <section>
+          <section style="font-size: 64px;">Sum up</section>
+          <section>
+            <li style="margin-bottom: 10px;">TypeScript is a strongly typed language that compiles to JavaScript</li>
+            <li style="margin-bottom: 10px;">TypeScript implements many OOP concepts such as inheritance, polymorphism, encapsulation and access modifiers</li>
+            <li style="margin-bottom: 10px;">Makes it faster and easier to write complex solutions</li>
+            <li style="margin-bottom: 10px;">TypeScript is a superset of JavaScript</li>
+          </section>
+          <section>
+            <li style="margin-bottom: 10px;">There are too many additional files</li>
+            <li style="margin-bottom: 10px;">Not all browsers support TypeScript debugging in the console</li>
+            <li style="margin-bottom: 10px;">A lot of non-trivial classes</li>
+            <li style="margin-bottom: 10px;">Implicit static typing</li>
+            <li style="margin-bottom: 10px;">It's a transpiler</li>
+          </section>
+        </section>
+<!-- 12 секция - спасибо -->
+        <section style="font-size: 64px;">
+          Thank you for attention
+        </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+        controlsLayout: 'edges',
+        progress: true,
+        slideNumber: "h.v",
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
